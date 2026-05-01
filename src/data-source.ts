@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import * as dotenv from "dotenv";
-import { Subject } from "typeorm/persistence/Subject";
+import { Subject } from "./entities/Subject";
 import { Grade } from "./entities/Grade";
 import { Unit } from "./entities/Unit";
 import { Lesson } from "./entities/Lesson";
