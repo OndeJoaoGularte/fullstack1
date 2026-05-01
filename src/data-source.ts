@@ -1,6 +1,10 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import * as dotenv from "dotenv";
+import { Subject } from "typeorm/persistence/Subject";
+import { Grade } from "./entities/Grade";
+import { Unit } from "./entities/Unit";
+import { Lesson } from "./entities/Lesson";
 
 dotenv.config();
 
@@ -13,7 +17,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true,
   logging: false,
-  entities: [],
+  entities: [Subject, Grade, Unit, Lesson],
   migrations: [],
   subscribers: [],
 });
