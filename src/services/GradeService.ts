@@ -32,4 +32,22 @@ export class GradeService {
       relations: ["subject", "units"],
     });
   }
+
+  // atualiza os dados de uma série específica utilizando o ID
+  async update(id: string, data: Partial<Grade>) {
+    const grade = await this.gradeRepository.findOneBy({ id });
+    if (!grade) throw new Error("Série não encontrada.");
+
+    this.gradeRepository.merge(grade, data);
+    await this.gradeRepository.save(grade);
+    return grade;
+  }
+
+  // deleta uma série específica utilizando o ID
+  async delete(id: string) {
+    const grade = await this.gradeRepository.findOneBy({ id });
+    if (!grade) throw new Error("Série não encontrada.");
+
+    await this.gradeRepository.remove(grade);
+  }
 }

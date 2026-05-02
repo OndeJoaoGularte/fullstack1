@@ -28,4 +28,22 @@ export class UnitService {
   async list() {
     return await this.unitRepository.find({ relations: ["grade", "lessons"] });
   }
+
+  // atualiza os dados de uma unidade específica utilizando o ID
+  async update(id: string, data: Partial<Unit>) {
+    const unit = await this.unitRepository.findOneBy({ id });
+    if (!unit) throw new Error("Unidade não encontrada.");
+
+    this.unitRepository.merge(unit, data);
+    await this.unitRepository.save(unit);
+    return unit;
+  }
+
+  // deleta uma unidade específica utilizando o ID
+  async delete(id: string) {
+    const unit = await this.unitRepository.findOneBy({ id });
+    if (!unit) throw new Error("Unidade não encontrada.");
+
+    await this.unitRepository.remove(unit);
+  }
 }

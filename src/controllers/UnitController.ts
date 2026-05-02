@@ -21,4 +21,34 @@ export class UnitController {
     const units = await service.list();
     return res.status(200).json(units);
   }
+  
+    // atualiza os dados de uma unidade específica utilizando o service que criamos anteriormente
+    // PUT
+    async update(req: Request, res: Response) {
+      try {
+        const id = req.params.id as string;
+        const service = new UnitService();
+  
+        const updatedUnit = await service.update(id, req.body);
+  
+        return res.status(200).json(updatedUnit);
+      } catch (error: any) {
+        return res.status(404).json({ error: error.message });
+      }
+    }
+  
+    // deleta uma unidade específica utilizando o service que criamos anteriormente
+    // DELETE
+    async delete(req: Request, res: Response) {
+      try {
+        const id = req.params.id as string;
+        const service = new UnitService();
+  
+        await service.delete(id);
+  
+        return res.status(204).send();
+      } catch (error: any) {
+        return res.status(404).json({ error: error.message });
+      }
+    }
 }
