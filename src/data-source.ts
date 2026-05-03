@@ -5,6 +5,7 @@ import { Subject } from "./entities/Subject";
 import { Grade } from "./entities/Grade";
 import { Unit } from "./entities/Unit";
 import { Lesson } from "./entities/Lesson";
+import { User } from "./entities/User";
 
 dotenv.config();
 
@@ -17,7 +18,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true,
   logging: false,
-  entities: [Subject, Grade, Unit, Lesson],
+  entities: [Subject, Grade, Unit, Lesson, User],
   migrations: [],
   subscribers: [],
 });
