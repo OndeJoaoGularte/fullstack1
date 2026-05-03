@@ -11,12 +11,6 @@ A aplicação desenvolvida deverá contemplar alguns assuntos vistos em aula. As
 Avaliação
 O conceito desse trabalho será baseado de acordo com as funcionalidades realizadas no trabalho e com os conceitos de APIs RESTful, regras de negócio e persistência empregados no trabalho. Abaixo segue a relação de conceitos e features a serem realizadas no trabalho:
 
-Conceito B:
-- Realizar as tarefas para alcançar o conceito C;
-- Realizar uma funcionalidade que utilize mapeamento Many-Many ou trabalhe com mais de duas entidades simultaneamente (caso do E-commerce);
-- Utilizar autenticação nas APIs aplicando padrões de segurança adequadamente (OAuth e JWT);
-
-
 Conceito A:
 - Aplicação completa, realizando todas as funcionalidades do conceito B com regras/funcionalidades de negócio aplicadas corretamente;
 - Utilizar recursos de mídias (imagem, áudio, vídeo ou outro recurso) em conjunto com um dos endpoints;
