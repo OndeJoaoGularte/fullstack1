@@ -25,10 +25,14 @@ routes.put("/subjects/:id", authMiddleware, subjectController.update);
 routes.delete("/subjects/:id", authMiddleware, subjectController.delete);
 
 // Séries
-routes.post("/subjects/:subjectId/grades", authMiddleware, gradeController.create);
+routes.post(
+    "/subjects/:subjectId/grades",
+    authMiddleware,
+    gradeController.create,
+);
 routes.get("/grades", gradeController.list);
 routes.put("/grades/:id", authMiddleware, gradeController.update);
-routes.delete("/grades/:id", authMiddleware, gradeController.delete); 
+routes.delete("/grades/:id", authMiddleware, gradeController.delete);
 
 // Unidades
 routes.post("/grades/:gradeId/units", authMiddleware, unitController.create);
