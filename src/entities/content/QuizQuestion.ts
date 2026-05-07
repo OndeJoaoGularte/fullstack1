@@ -3,23 +3,26 @@ import { QuizBlock } from "./ContentBlock";
 
 @Entity("quiz_questions")
 export class QuizQuestion {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @ManyToOne(() => QuizBlock, (quizBlock) => quizBlock.questions, {
-        onDelete: "CASCADE",
-    })
-    quizBlock: QuizBlock;
+  @Column({ type: "text" })
+  quizBlockId: string;
 
-    @Column({ type: "text" })
-    questionText: string;
+  @ManyToOne(() => QuizBlock, (quizBlock) => quizBlock.questions, {
+    onDelete: "CASCADE",
+  })
+  quizBlock: QuizBlock;
 
-    @Column({ type: "simple-array" })
-    options: string[];
+  @Column({ type: "text" })
+  questionText: string;
 
-    @Column({ type: "int" })
-    correctOptionIndex: number;
+  @Column({ type: "simple-array" })
+  options: string[];
 
-    @Column({ type: "text" })
-    solutionGuide: string;
+  @Column({ type: "int" })
+  correctOptionIndex: number;
+
+  @Column({ type: "text" })
+  solutionGuide: string;
 }

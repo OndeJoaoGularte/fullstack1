@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { SubjectController } from "../controllers/SubjectController";
-import { GradeController } from "../controllers/GradeController";
-import { UnitController } from "../controllers/UnitController";
-import { LessonController } from "../controllers/LessonController";
-import { AuthController } from "../controllers/AuthController";
+import { SubjectController } from "../controllers/content/SubjectController";
+import { GradeController } from "../controllers/content/GradeController";
+import { UnitController } from "../controllers/content/UnitController";
+import { LessonController } from "../controllers/content/LessonController";
+import { AuthController } from "../controllers/user/AuthController";
 import { authMiddleware } from "../middlewares/authMiddleware";
 
 const routes = Router();

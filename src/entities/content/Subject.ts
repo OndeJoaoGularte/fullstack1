@@ -1,33 +1,33 @@
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    OneToMany,
-    CreateDateColumn,
-    UpdateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import { Grade } from "./Grade";
 
 @Entity("subjects")
 export class Subject {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column({ type: "text" })
-    name: string;
+  @Column({ type: "text" })
+  name: string;
 
-    @Column({ type: "text" })
-    shortDescription: string;
+  @Column({ type: "text", nullable: true })
+  shortDescription: string;
 
-    @Column({ type: "text" })
-    longDescription: string;
+  @Column({ type: "text", nullable: true })
+  longDescription: string;
 
-    @OneToMany(() => Grade, (grade) => grade.subject, { cascade: true })
-    grades: Grade[];
+  @OneToMany(() => Grade, (grade) => grade.subject, { cascade: true })
+  grades: Grade[];
 
-    @CreateDateColumn({ type: "timestamp" })
-    createdAt: Date;
+  @CreateDateColumn({ type: "timestamp" })
+  createdAt: Date;
 
-    @UpdateDateColumn({ type: "timestamp" })
-    updatedAt: Date;
+  @UpdateDateColumn({ type: "timestamp" })
+  updatedAt: Date;
 }

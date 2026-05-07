@@ -3,7 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  ManyToOne
+  ManyToOne,
 } from "typeorm";
 import { User } from "./User";
 import { Subject } from "../content/Subject";
@@ -19,7 +19,9 @@ export class UserEnrollmentSubject {
   @Column({ type: "text" })
   subjectId: string;
 
-  @ManyToOne(() => User, user => user.enrollmentSubjects, { onDelete: "CASCADE" })
+  @ManyToOne(() => User, (user) => user.enrollmentSubjects, {
+    onDelete: "CASCADE",
+  })
   user: User;
 
   @ManyToOne(() => Subject, { onDelete: "CASCADE" })

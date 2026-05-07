@@ -1,38 +1,41 @@
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    ManyToOne,
-    OneToMany,
-    CreateDateColumn,
-    UpdateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from "typeorm";
 import { Grade } from "./Grade";
 import { Lesson } from "./Lesson";
 
 @Entity("units")
 export class Unit {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column({ type: "text" })
-    title: string;
+  @Column({ type: "text" })
+  title: string;
 
-    @Column({ type: "text" })
-    description: string;
+  @Column({ type: "text", nullable: true })
+  description: string;
 
-    @Column({ type: "int" })
-    orderIndex: number;
+  @Column({ type: "int", default: 0 })
+  orderIndex: number;
 
-    @ManyToOne(() => Grade, (grade) => grade.units, { onDelete: "CASCADE" })
-    grade: Grade;
+  @Column({ type: "text" })
+  gradeId: string;
 
-    @OneToMany(() => Lesson, (lesson) => lesson.unit, { cascade: true })
-    lessons: Lesson[];
+  @ManyToOne(() => Grade, (grade) => grade.units, { onDelete: "CASCADE" })
+  grade: Grade;
 
-    @CreateDateColumn({ type: "timestamp" })
-    createdAt: Date;
+  @OneToMany(() => Lesson, (lesson) => lesson.unit, { cascade: true })
+  lessons: Lesson[];
 
-    @UpdateDateColumn({ type: "timestamp" })
-    updatedAt: Date;
+  @CreateDateColumn({ type: "timestamp" })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: "timestamp" })
+  updatedAt: Date;
 }

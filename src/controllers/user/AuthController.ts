@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AuthService } from "../services/AuthService";
+import { AuthService } from "../../services/user/AuthService";
 
 export class AuthController {
     // criação de um novo usuário utilizando o service que criamos anteriormente
