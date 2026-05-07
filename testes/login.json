@@ -1,0 +1,33 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "login",
+    "collectionId": "f8bc0146-ec6d-4bae-b64e-99d7ad081f34",
+    "dateExported": "2026-05-07T20:19:07.161Z",
+    "version": "1.4",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "06ac2832-189e-4b39-8628-0b0ac167a03b",
+            "colId": "f8bc0146-ec6d-4bae-b64e-99d7ad081f34",
+            "containerId": "",
+            "name": "http://localhost:3000/login",
+            "url": "http://localhost:3000/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2026-05-07T20:18:54.196Z",
+            "modified": "2026-05-07T20:18:54.196Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{\r",
+                    "  \"email\": \"teste@email.com\",\r",
+                    "  \"password\": \"teste\"\r",
+                    "}"
+                ],
+                "form": []
+            }
+        }
+    ],
+    "ref": "G_u0E9ysQUy3AtdMxl4RfsWXBPTNMS1ILsX7JvKXpZ_qad-0PZt4jtpOPPNpOY93jhbwL0sy_4di4_CR3eXPDA"
+}

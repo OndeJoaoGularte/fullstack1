@@ -1,24 +1,50 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import * as dotenv from "dotenv";
-import { Subject } from "./entities/Subject";
-import { Grade } from "./entities/Grade";
-import { Unit } from "./entities/Unit";
-import { Lesson } from "./entities/Lesson";
-import { User } from "./entities/User";
+import { Subject } from "./entities/content/Subject";
+import { Grade } from "./entities/content/Grade";
+import { Unit } from "./entities/content/Unit";
+import { Lesson } from "./entities/content/Lesson";
+import { LessonFeedback } from "./entities/content/LessonFeedback";
+import {
+  ContentBlock,
+  QuizBlock,
+  ResourceBlock,
+  TextBlock,
+  VideoBlock,
+} from "./entities/content/ContentBlock";
+import { QuizQuestion } from "./entities/content/QuizQuestion";
+import { User } from "./entities/user/User";
+import { UserEnrollmentSubject } from "./entities/user/UserEnrollmentSubject";
+import { LessonProgress } from "./entities/user/LessonProgress";
 
 dotenv.config();
 
 export const AppDataSource = new DataSource({
-    type: "postgres",
-    host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT || "5432"),
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-    synchronize: true,
-    logging: false,
-    entities: [Subject, Grade, Unit, Lesson, User],
-    migrations: [],
-    subscribers: [],
+  type: "postgres",
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT || "5432"),
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  synchronize: true,
+  logging: false,
+  entities: [
+    Subject,
+    Grade,
+    Unit,
+    Lesson,
+    LessonFeedback,
+    ContentBlock,
+    TextBlock,
+    VideoBlock,
+    ResourceBlock,
+    QuizBlock,
+    QuizQuestion,
+    User,
+    UserEnrollmentSubject,
+    LessonProgress,
+  ],
+  migrations: [],
+  subscribers: [],
 });
