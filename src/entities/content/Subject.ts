@@ -13,22 +13,21 @@ export class Subject {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column()
+    @Column({ type: "text" })
     name: string;
 
-    @Column()
+    @Column({ type: "text" })
     shortDescription: string;
 
     @Column({ type: "text" })
     longDescription: string;
 
-    // a mesma matéria pode estar inserida em mais de uma série
     @OneToMany(() => Grade, (grade) => grade.subject, { cascade: true })
     grades: Grade[];
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: "timestamp" })
     createdAt: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ type: "timestamp" })
     updatedAt: Date;
 }

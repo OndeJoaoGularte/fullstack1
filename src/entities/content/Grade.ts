@@ -10,6 +10,12 @@ import {
 import { Subject } from "./Subject";
 import { Unit } from "./Unit";
 
+export enum Stage {
+    HIGH_SCHOOL = "Ensino Médio",
+    ELEMENTARY_1 = "Ensino Fundamental 1",
+    ELEMENTARY_2 = "Ensino Fundamental 2",
+}
+
 @Entity("grades")
 export class Grade {
     @PrimaryGeneratedColumn("uuid")
@@ -20,26 +26,27 @@ export class Grade {
 
     @Column({
         type: "enum",
-        enum: ["Ensino Médio", "Ensino Fundamental 1", "Ensino Fundamental 2"],
+        enum: Stage,
     })
-    stage: string;
+    stage: Stage;
 
-    @Column()
+    @Column({ type: "text" })
     name: string;
 
-    // mais de uma série pode ter a mesma matéria
+    @Column({ type: "int" })
+    orderIndex: number;
+
+    @CreateDateColumn({ type: "timestamp" })
+    createdAt: Date;
+
+    @UpdateDateColumn({ type: "timestamp" })
+    updatedAt: Date;
+
     @ManyToOne(() => Subject, (subject) => subject.grades, {
         onDelete: "CASCADE",
     })
     subject: Subject;
 
-    // uma série é composta por várias unidades
     @OneToMany(() => Unit, (unit) => unit.grade, { cascade: true })
     units: Unit[];
-
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
 }

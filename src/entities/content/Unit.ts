@@ -15,27 +15,24 @@ export class Unit {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    // ordem das unidades dentro de uma série
-    @Column({ type: "int", default: 1 })
-    orderIndex: number;
-
-    @Column()
+    @Column({ type: "text" })
     title: string;
 
-    @Column("text")
+    @Column({ type: "text" })
     description: string;
 
-    // várias unidades compõem uma série
+    @Column({ type: "int" })
+    orderIndex: number;
+
     @ManyToOne(() => Grade, (grade) => grade.units, { onDelete: "CASCADE" })
     grade: Grade;
 
-    // uma unidade é composta por várias aulas
     @OneToMany(() => Lesson, (lesson) => lesson.unit, { cascade: true })
     lessons: Lesson[];
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: "timestamp" })
     createdAt: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ type: "timestamp" })
     updatedAt: Date;
 }
